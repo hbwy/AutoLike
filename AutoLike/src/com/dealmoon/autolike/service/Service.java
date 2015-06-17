@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package com.dealmoon.autolike.service;
 
 import java.util.List;
@@ -43,56 +42,3 @@ public class Service {
 		logger.debug("postId:" + postId + " " + token + " " + "response:" + response);
 	}
 }
-=======
-package com.dealmoon.autolike.service;
-
-import java.util.List;
-import java.util.Map;
-
-import org.apache.log4j.Logger;
-
-import com.dealmoon.autolike.utils.MyUtils;
-
-public class Service {
-
-	private static Logger logger = Logger.getLogger(Service.class);
-	private static Map<String, List<String>> reqData = MyUtils.getAppRequestData();
-
-	/**
-	 * 1-3个随机用户给新用户的晒单点赞
-	 */
-	public void postaddlike() {
-
-		List<String> reqJsons = (List<String>) reqData.get("postaddlike");
-		String reqJson = reqJsons.get(0);
-
-		//获取满足点赞条件的post的id集合
-		List<String> postid_authors = MyUtils.getPostList("new", 1, 20);
-		
-		for (String postid_author : postid_authors) {
-			String[] id_author = postid_author.split("_");
-			
-			List<String> tokens = MyUtils.getRandomToken(id_author[1]);
-			//随机1-3个用户点赞（除去了post的作者）
-			for (String token : tokens) {
-				addLike(token, reqJson, id_author[0]);
-			}
-		}
-	}
-
-	/**
-	 * 1个用户给1个晒单点赞
-	 * 
-	 * @param token 用户token
-	 * @param reqJson 请求的json串
-	 * @param postId 晒单id
-	 */
-	private void addLike(String token, String reqJson, String postId) {
-		//用户给该post点赞
-		String reqJson0 = "{" + token + reqJson + "}";
-		reqJson0 = MyUtils.replaceIdinBackCommand(reqJson0, postId);
-		String response = MyUtils.sendPost(reqJson0);
-		logger.debug("postId:" + postId + " " + token + " " + "response:" + response);
-	}
-}
->>>>>>> d06834c89164fab17bfda82de80cc12aac7f1547

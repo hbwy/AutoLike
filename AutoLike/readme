@@ -1,0 +1,25 @@
+实现功能：自动点赞
+目录结构：
+   src：
+	   com.dealmoon.autolike.main.Main  是程序运行的main方法,程序入口
+	   com.dealmoon.autolike.service.Service  实现自动点赞逻辑
+	   com.dealmoon.autolike.utils.MyUtils  用到的工具类
+	   log4j.properties  配置log4j日志
+   
+   lib  程序运行依赖的jar包
+   logs  记录点赞日志:用户id,post id,responseData
+   
+   pro：
+       app_changed.properties   app接口请求数据中变化的部分
+       app_unchanged.properties   app接口请求数据中不变的部分
+       config.properties  配置请求的域名
+       token.properties  给用户点赞的用户列表   
+                                                                           格式：用户id=用户token 如： 649=649|f47a6a5ee03ca7ee61a47e30f6eb79d5
+使用说明：
+   1.导出
+	         在eclipse中选择项目-->右键-->Export-->Runnable jar file-->lunch configuration下拉菜单中选择 main方法(Main-AutoLike)
+	   -->export destination选择导出的名称和位置-->library handling选择第二项Package required-->Save as ant script不勾选
+	   -->finish
+   2.生成的jar文件包含class和jar包,不包含配置文件,所以需要把logs,pro两个文件夹放在jar文件同级目录  
+   3.运行指令    java -jar autolike.jar
+   4.crontab：*/1 * * * * cd /home/java/autolike && /home/java/jdk1.8.0_05/bin/java  -jar /home/java/autolike/autolike.jar                                                        
