@@ -1,0 +1,14 @@
+<<<<<<< HEAD
+eclipse.preferences.version=1
+encoding//pro/app_changed.properties=UTF-8
+encoding//pro/app_unchanged.properties=UTF-8
+encoding//pro/config.properties=UTF-8
+encoding//pro/token.properties=UTF-8
+encoding/<project>=UTF-8
+=======
+eclipse.preferences.version=1
+encoding//pro/app_changed.properties=UTF-8
+encoding//pro/app_unchanged.properties=UTF-8
+encoding//pro/config.properties=UTF-8
+encoding//pro/token.properties=UTF-8
+>>>>>>> d06834c89164fab17bfda82de80cc12aac7f1547
